@@ -23,29 +23,43 @@ import json
 import random
 
 def get(link: str):
+    """Run a HTTP GET request to the given URL, parse for JSON, and return a `dict` of said response."""
     r = requests.get(link)
     return json.loads(r.text)
 
 def getCharacterbyID(id: int):
+    """Get a JoJo character by it's API ID."""
     return get("https://stand-by-me.herokuapp.com/api/v1/characters/{}".format(str(id)))
     
 def getAllCharacters():
+    """Get all JoJo characters."""
     return get("https://stand-by-me.herokuapp.com/api/v1/characters/")
 
 def getCharacterbyQuery(category: str, query: str):
+    """Get a character by it's query
+    :arg category: Character Category
+    :arg query: Character Query"""
     return get("https://stand-by-me.herokuapp.com/api/v1/characters/query/query?{0}={1}".format(category, query))
 
 def getRandomCharacter():
+    """Get a random JoJo Character"""
     return get("https://stand-by-me.herokuapp.com/api/v1/characters/{}".format(random.randint(1, 155)))
 
 def getStandbyID(id: int):
+    """Get a JoJo stand by it's API ID.
+    :arg id: The API ID of the stand"""
     return get("https://stand-by-me.herokuapp.com/api/v1/stands/{}".format(str(id)))
 
 def getAllStands():
+    """Get all JoJo stands"""
     return get("https://stand-by-me.herokuapp.com/api/v1/stands/")
 
 def getStandbyQuery(category: str, query: str):
+    """Get a stand by it's query
+    :arg category: Stand Category
+    :arg query: Stand Query"""
     return get("https://stand-by-me.herokuapp.com/api/v1/stands/query/query?{0}={1}".format(category, query))
 
 def getRandomStand():
+    """Get a random JoJo stand."""
     return get("https://stand-by-me.herokuapp.com/api/v1/stands/{}".format(random.randint(1, 155)))
