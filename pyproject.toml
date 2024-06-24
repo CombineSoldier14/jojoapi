@@ -13,9 +13,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-  "requests",
-  "json",
-  "random"
+  "requests"
 ]
 
 [project.urls]
